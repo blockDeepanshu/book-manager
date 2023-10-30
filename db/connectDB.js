@@ -4,7 +4,7 @@ mongoose.connection.once("open", () => {
   console.log("Mongo DB connected");
 });
 
-mongoose.connect.on("error", (err) => {
+mongoose.connection.on("error", (err) => {
   console.log("Mongo Connection error", err);
 });
 
