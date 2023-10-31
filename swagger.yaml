@@ -1,0 +1,147 @@
+openapi: 3.0.0
+info:
+  title: Book Manager
+  contact: {}
+  version: "1.0"
+servers:
+  - url: https://book-manager-2nkt.onrender.com/api/v1
+    variables: {}
+paths:
+  /books:
+    get:
+      tags:
+        - Books
+      summary: Get All Books
+      operationId: GetAllBooks
+      parameters: []
+      responses:
+        "200":
+          description: ""
+          headers: {}
+      deprecated: false
+    post:
+      tags:
+        - Books
+      summary: Create Book
+      operationId: CreateBook
+      parameters: []
+      requestBody:
+        description: ""
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: "#/components/schemas/CreateBookRequest"
+                - example:
+                    title: The Eagle Has Landed
+                    author: Jack Higgins
+                    summary: The Eagle Has Landed is a book by British writer Jack Higgins, set during World War II and first published in 1975.
+            example:
+              title: The Eagle Has Landed
+              author: Jack Higgins
+              summary: The Eagle Has Landed is a book by British writer Jack Higgins, set during World War II and first published in 1975.
+        required: true
+      responses:
+        "200":
+          description: ""
+          headers: {}
+      deprecated: false
+  /books/{id}:
+    parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+        description: The book ID
+    get:
+      tags:
+        - Books
+      summary: Get a Book
+      operationId: GetaBook
+      parameters: []
+      responses:
+        "200":
+          description: ""
+          headers: {}
+      deprecated: false
+
+    patch:
+      tags:
+        - Books
+      summary: Update Book
+      operationId: UpdateBook
+      parameters: []
+      requestBody:
+        description: ""
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: "#/components/schemas/UpdateBookRequest"
+                - example:
+                    title: The Eagle Has Landed
+                    author: Jack Higgins
+                    summary: The Eagle Has Landed is a book by British writer Jack Higgins, set during World War II and first published in 1975.Updated
+            example:
+              title: The Eagle Has Landed
+              author: Jack Higgins
+              summary: The Eagle Has Landed is a book by British writer Jack Higgins, set during World War II and first published in 1975.Updated
+        required: true
+      responses:
+        "200":
+          description: ""
+          headers: {}
+      deprecated: false
+    delete:
+      tags:
+        - Books
+      summary: Delete Book
+      operationId: DeleteBook
+      parameters: []
+      responses:
+        "200":
+          description: ""
+          headers: {}
+      deprecated: false
+components:
+  schemas:
+    CreateBookRequest:
+      title: CreateBookRequest
+      required:
+        - title
+        - author
+        - summary
+      type: object
+      properties:
+        title:
+          type: string
+        author:
+          type: string
+        summary:
+          type: string
+      example:
+        title: The Eagle Has Landed
+        author: Jack Higgins
+        summary: The Eagle Has Landed is a book by British writer Jack Higgins, set during World War II and first published in 1975.
+    UpdateBookRequest:
+      title: UpdateBookRequest
+      required:
+        - title
+        - author
+        - summary
+      type: object
+      properties:
+        title:
+          type: string
+        author:
+          type: string
+        summary:
+          type: string
+      example:
+        title: The Eagle Has Landed
+        author: Jack Higgins
+        summary: The Eagle Has Landed is a book by British writer Jack Higgins, set during World War II and first published in 1975.Updated
+tags:
+  - name: Books
+    description: ""
